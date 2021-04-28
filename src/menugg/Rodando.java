@@ -12,6 +12,7 @@ import java.awt.Graphics;
 import java.util.Random;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import static menugg.Questoes.questao;
 
@@ -26,6 +27,7 @@ public class Rodando extends javax.swing.JFrame {
     /**
      * Creates new form Rodando
      */
+    int pontostotal=20;
     public Rodando() {
         initComponents();
            jLabel6.setVisible(false);
@@ -33,7 +35,15 @@ public class Rodando extends javax.swing.JFrame {
              jLabel8.setVisible(false);
              jLabel9.setVisible(false);
              jLabel10.setVisible(false);
-             jTextField1.setText(null);
+             jTextField1.setVisible(false);
+             jButton1.setVisible(false);
+             jButton2.setVisible(false);
+             jButton3.setVisible(false);
+             jButton4.setVisible(false);
+             jButton5.setVisible(false);
+             jButton6.setVisible(false);
+             jButton7.setText("Iniciar");
+              jTextField1.setText("Digite:");
         /*
          String q = null;
          JLabel label = new JLabel(); 
@@ -101,14 +111,13 @@ public class Rodando extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         canvas1 = new java.awt.Canvas();
-        ImageIcon icon = new ImageIcon(getClass().getResource("/imagem/CAVE.png"));
+        ImageIcon icon = new ImageIcon(getClass().getResource("/imagem/caverna roxa.png"));
         Image image =  icon.getImage();
         jPanel1 = new javax.swing.JPanel(){
             public void paintComponent(Graphics g){
                 g.drawImage(image,0,0,getWidth(),getHeight(),this);
             }
-        }
-        ;
+        };
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
@@ -249,10 +258,11 @@ public class Rodando extends javax.swing.JFrame {
                                 .addGap(9, 9, 9)
                                 .addComponent(jLabel6)
                                 .addGap(166, 166, 166)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel7)
-                                    .addComponent(jLabel8)
-                                    .addComponent(jLabel9))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel8)
+                                        .addComponent(jLabel9)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel2)
@@ -333,7 +343,7 @@ public class Rodando extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         mudarlabel();
-        jTextField1.setText(null);
+        
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -341,51 +351,54 @@ public class Rodando extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
         public void mudarlabel(){
-       /* String q= null;
-        String a= null;
-        String b= null;
-        String c= null;
-        String d= null;
-               
-            jLabel1.setText(questao1(q)); jLabel1.setForeground(Color.red);
-            jLabel2.setText(alternativa1(a));jLabel2.setForeground(Color.red);
-            jLabel3.setText(alternativa2(b));jLabel3.setForeground(Color.red);
-            jLabel4.setText(alternativa3(c));jLabel4.setForeground(Color.red);
-            jLabel5.setText(alternativa4(d));jLabel5.setForeground(Color.red);
-          */ 
+    
              jLabel6.setVisible(true);
              jLabel7.setVisible(true);
              jLabel8.setVisible(true);
              jLabel9.setVisible(true);
              jLabel10.setVisible(true);
-            // jTextField2.setText("");
-             
-            Random r = new Random();
-        int random = r.nextInt(12);
-         //  String opcao =  jTextField2.getText();
+             jTextField1.setVisible(true);
+             jButton7.setText("Proxima");
+           
             
              String [][] q = new String[12][6];
-           for(/*this*/int i=random;i==random;){
+           for(int i=0;i<=11;i++){
             
             String teste =questao(q)[i][0].toString();
             String teste1 =questao(q)[i][1].toString();
             String teste2 =questao(q)[i][2].toString();
             String teste3 =questao(q)[i][3].toString();
             String teste4 =questao(q)[i][4].toString();
-           /* String teste2 =questao1(q)[contador].toString();
-            String teste3 =questao1(q)[contador].toString();
-            String teste4 =questao1(q)[contador].toString();
-           */
+          
             jLabel6.setText(teste);jLabel6.setForeground(Color.red);
             jLabel7.setText(teste1);jLabel7.setForeground(Color.red);
             jLabel8.setText(teste2);jLabel8.setForeground(Color.red);
             jLabel9.setText(teste3);jLabel9.setForeground(Color.red);
             jLabel10.setText(teste4);jLabel10.setForeground(Color.red);
-           // jLabel5.setText(opcao);
-            //contador++;
+          
            
+         
+            
+            String alternativa = jTextField1.getText();
+          if(jTextField1.getText().equals("Digite:")){ 
+              JOptionPane.showMessageDialog(null, "digite a resposta!!!!! ");
+              break;
+            
+          }
+          
+           if(alternativa.equals(q[i][5])){
+              JOptionPane.showMessageDialog(null, "Acertou");
+              jTextField1.setText("Digite:");
+              pontostotal+=10;
+            
+           } else {JOptionPane.showMessageDialog(null, "Errou");
+             //Gameover menuinicial = new Gameover(); menuinicial.setVisible(true);
+             jTextField1.setText("Digite:");
+             pontostotal-=10;
             break;
+         } 
            }
+           if(pontostotal<20){Gameover menuinicial = new Gameover(); menuinicial.setVisible(true);}
          } 
        
          
