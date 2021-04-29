@@ -10,13 +10,12 @@ import java.awt.Component;
 import java.awt.Image;
 import java.awt.Graphics;
 import java.util.Random;
+import java.util.Scanner;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import static menugg.Questoes.questao;
-
-
 
 /**
  *
@@ -27,23 +26,26 @@ public class Rodando extends javax.swing.JFrame {
     /**
      * Creates new form Rodando
      */
-    int pontostotal=20;
+    int pontostotal = 20;
+    int contador = 0;
+
     public Rodando() {
         initComponents();
-           jLabel6.setVisible(false);
-             jLabel7.setVisible(false);
-             jLabel8.setVisible(false);
-             jLabel9.setVisible(false);
-             jLabel10.setVisible(false);
-             jTextField1.setVisible(false);
-             jButton1.setVisible(false);
-             jButton2.setVisible(false);
-             jButton3.setVisible(false);
-             jButton4.setVisible(false);
-             jButton5.setVisible(false);
-             jButton6.setVisible(false);
-             jButton7.setText("Iniciar");
-              jTextField1.setText("Digite:");
+        jLabel6.setVisible(false);
+        jLabel7.setVisible(false);
+        jLabel8.setVisible(false);
+        jLabel9.setVisible(false);
+        jLabel10.setVisible(false);
+        jTextField1.setVisible(false);
+        jButton1.setVisible(false);
+        jButton2.setVisible(false);
+        jButton3.setVisible(false);
+        jButton4.setVisible(false);
+        jButton5.setVisible(false);
+        jButton6.setVisible(false);
+        jButton7.setText("Iniciar");
+        jTextField1.setText("");
+
         /*
          String q = null;
          JLabel label = new JLabel(); 
@@ -88,10 +90,8 @@ public class Rodando extends javax.swing.JFrame {
         label.setBounds(620, 450, 250, 50);
        label.setForeground(Color.WHITE);
         add(jPanel1);
-        */
-        
+         */
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -342,66 +342,121 @@ public class Rodando extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButtonMenuItem2ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        mudarlabel();
-        
+        if (isInicio == true) {
+            executarPrimeira();
+        } else {
+            mudarlabel();
+        }
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        
+
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-        public void mudarlabel(){
-    
-             jLabel6.setVisible(true);
-             jLabel7.setVisible(true);
-             jLabel8.setVisible(true);
-             jLabel9.setVisible(true);
-             jLabel10.setVisible(true);
-             jTextField1.setVisible(true);
-             jButton7.setText("Proxima");
-           
-            
-             String [][] q = new String[12][6];
-           for(int i=0;i<=11;i++){
-            
-            String teste =questao(q)[i][0].toString();
-            String teste1 =questao(q)[i][1].toString();
-            String teste2 =questao(q)[i][2].toString();
-            String teste3 =questao(q)[i][3].toString();
-            String teste4 =questao(q)[i][4].toString();
-          
-            jLabel6.setText(teste);jLabel6.setForeground(Color.red);
-            jLabel7.setText(teste1);jLabel7.setForeground(Color.red);
-            jLabel8.setText(teste2);jLabel8.setForeground(Color.red);
-            jLabel9.setText(teste3);jLabel9.setForeground(Color.red);
-            jLabel10.setText(teste4);jLabel10.setForeground(Color.red);
-          
-           
-         
-            
-            String alternativa = jTextField1.getText();
-          if(jTextField1.getText().equals("Digite:")){ 
-              JOptionPane.showMessageDialog(null, "digite a resposta!!!!! ");
-              break;
-            
-          }
-          
-           if(alternativa.equals(q[i][5])){
-              JOptionPane.showMessageDialog(null, "Acertou");
-              jTextField1.setText("Digite:");
-              pontostotal+=10;
-            
-           } else {JOptionPane.showMessageDialog(null, "Errou");
-             //Gameover menuinicial = new Gameover(); menuinicial.setVisible(true);
-             jTextField1.setText("Digite:");
-             pontostotal-=10;
-            break;
-         } 
-           }
-           if(pontostotal<20){Gameover menuinicial = new Gameover(); menuinicial.setVisible(true);}
-         } 
-       
-         
+    String[][] listaDePerguntas = new String[12][6];
+    int contadorPergunta = 1;
+    boolean isInicio = true;
+
+    public void mudarlabel() {
+        jLabel6.setVisible(true);
+        jLabel7.setVisible(true);
+        jLabel8.setVisible(true);
+        jLabel9.setVisible(true);
+        jLabel10.setVisible(true);
+        jTextField1.setVisible(true);
+        jButton7.setText("Proxima");
+
+        String resposta = jTextField1.getText();
+        if (verificaResposta(resposta)) {
+            JOptionPane.showMessageDialog(null, "CERTO ");
+        } else {
+            JOptionPane.showMessageDialog(null, "Errou ");
+            isInicio = true;
+            jTextField1.setText("");
+            executarPrimeira();
+            return;
+        }
+        if (contadorPergunta <= listaDePerguntas.length - 1) {
+            String teste = questao(listaDePerguntas)[contadorPergunta][0];
+            String teste1 = questao(listaDePerguntas)[contadorPergunta][1];
+            String teste2 = questao(listaDePerguntas)[contadorPergunta][2];
+            String teste3 = questao(listaDePerguntas)[contadorPergunta][3];
+            String teste4 = questao(listaDePerguntas)[contadorPergunta][4];
+
+            jLabel6.setText(teste);
+            jLabel6.setForeground(Color.red);
+            jLabel7.setText(teste1);
+            jLabel7.setForeground(Color.red);
+            jLabel8.setText(teste2);
+            jLabel8.setForeground(Color.red);
+            jLabel9.setText(teste3);
+            jLabel9.setForeground(Color.red);
+            jLabel10.setText(teste4);
+            jLabel10.setForeground(Color.red);
+            contadorPergunta++;
+
+            JOptionPane.showMessageDialog(null, "digite a resposta!!!!! ");
+
+        }
+
+//            if(resposta.equals(listaDePerguntas[contador][5])){
+//                JOptionPane.showMessageDialog(null, "Acertou");
+//                mudarlabel();
+//            } else {
+//                JOptionPane.showMessageDialog(null, "Errou");
+//                pontostotal--;
+//            }
+//          
+//           if(alternativa.equals(q[i][5])){
+//              JOptionPane.showMessageDialog(null, "Acertou");
+//              jTextField1.setText("Digite:");
+//              pontostotal+=10;
+//            
+//           } else {JOptionPane.showMessageDialog(null, "Errou");
+//             //Gameover menuinicial = new Gameover(); menuinicial.setVisible(true);
+//             jTextField1.setText("Digite:");
+//             pontostotal-=10;
+//            break;
+//         } 
+//           }
+//           if(pontostotal<20){Gameover menuinicial = new Gameover(); menuinicial.setVisible(true);}
+    }
+
+    public void executarPrimeira() {
+        jLabel6.setVisible(true);
+        jLabel7.setVisible(true);
+        jLabel8.setVisible(true);
+        jLabel9.setVisible(true);
+        jLabel10.setVisible(true);
+        jTextField1.setVisible(true);
+        jButton7.setText("Proxima");
+        jTextField1.setText("");
+        
+        String teste = questao(listaDePerguntas)[contador][0];
+        String teste1 = questao(listaDePerguntas)[contador][1];
+        String teste2 = questao(listaDePerguntas)[contador][2];
+        String teste3 = questao(listaDePerguntas)[contador][3];
+        String teste4 = questao(listaDePerguntas)[contador][4];
+
+        jLabel6.setText(teste);
+        jLabel6.setForeground(Color.red);
+        jLabel7.setText(teste1);
+        jLabel7.setForeground(Color.red);
+        jLabel8.setText(teste2);
+        jLabel8.setForeground(Color.red);
+        jLabel9.setText(teste3);
+        jLabel9.setForeground(Color.red);
+        jLabel10.setText(teste4);
+        jLabel10.setForeground(Color.red);
+        isInicio = false;
+        JOptionPane.showMessageDialog(null, "digite a resposta!!!!! ");
+    }
+
+    public boolean verificaResposta(String resposta) {
+        return resposta.equals(listaDePerguntas[contador][5]);
+
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -433,8 +488,7 @@ public class Rodando extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Rodando().setVisible(true);
-                 
-               
+
             }
         });
     }
