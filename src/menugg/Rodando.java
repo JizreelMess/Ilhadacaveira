@@ -330,39 +330,35 @@ public class Rodando extends javax.swing.JFrame {
     private void executarPrimeira() {
         setVisible();
         setColorText();
-        String questao = questao(listaDePerguntas)[contador][0];
-        String alternativa1 = questao(listaDePerguntas)[contador][1];
-        String alternativa2 = questao(listaDePerguntas)[contador][2];
-        String alternativa3 = questao(listaDePerguntas)[contador][3];
-        String alternativa4 = questao(listaDePerguntas)[contador][4];
+        String questao = questao(listaDePerguntas)[0][0];
+        String alternativa1 = questao(listaDePerguntas)[0][1];
+        String alternativa2 = questao(listaDePerguntas)[0][2];
+        String alternativa3 = questao(listaDePerguntas)[0][3];
+        String alternativa4 = questao(listaDePerguntas)[0][4];
 
         jLabel6.setText(questao);
-        jLabel6.setForeground(Color.red);
         jLabel7.setText(alternativa1);
-        jLabel7.setForeground(Color.red);
         jLabel8.setText(alternativa2);
-        jLabel8.setForeground(Color.red);
         jLabel9.setText(alternativa3);
-        jLabel9.setForeground(Color.red);
         jLabel10.setText(alternativa4);
-        jLabel10.setForeground(Color.red);
+        
         isInicio = false;
     }
 
     private void executarDemais() {
 
         if (contadorPergunta <= listaDePerguntas.length - 1) {
-            String teste = questao(listaDePerguntas)[contadorPergunta][0];
-            String teste1 = questao(listaDePerguntas)[contadorPergunta][1];
-            String teste2 = questao(listaDePerguntas)[contadorPergunta][2];
-            String teste3 = questao(listaDePerguntas)[contadorPergunta][3];
-            String teste4 = questao(listaDePerguntas)[contadorPergunta][4];
+            String questao = questao(listaDePerguntas)[contadorPergunta][0];
+            String alternativa1 = questao(listaDePerguntas)[contadorPergunta][1];
+            String alternativa2 = questao(listaDePerguntas)[contadorPergunta][2];
+            String alternativa3 = questao(listaDePerguntas)[contadorPergunta][3];
+            String alternativa4 = questao(listaDePerguntas)[contadorPergunta][4];
 
-            jLabel6.setText(teste);
-            jLabel7.setText(teste1);
-            jLabel8.setText(teste2);
-            jLabel9.setText(teste3);
-            jLabel10.setText(teste4);
+            jLabel6.setText(questao);
+            jLabel7.setText(alternativa1);
+            jLabel8.setText(alternativa2);
+            jLabel9.setText(alternativa3);
+            jLabel10.setText(alternativa4);
 
         } else {
             JOptionPane.showMessageDialog(null, " FIM DE JOGO ");
