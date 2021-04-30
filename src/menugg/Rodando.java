@@ -311,7 +311,7 @@ public class Rodando extends javax.swing.JFrame {
             contador++;
             contadorPergunta++;
         } else if (isInicio == false && contador == 0) {
-            JOptionPane.showMessageDialog(null, "Errou1 ");
+            JOptionPane.showMessageDialog(null, "Errou!!! ");
             isInicio = true;
             jTextField1.setText("");
             pontosTotal--;
@@ -319,7 +319,7 @@ public class Rodando extends javax.swing.JFrame {
             executarPrimeira();
 
         } else {
-            JOptionPane.showMessageDialog(null, "Errou2 ");
+            JOptionPane.showMessageDialog(null, "Errou!!! ");
             jTextField1.setText("");
             pontosTotal--;
             verificaVidaDoJogador();
