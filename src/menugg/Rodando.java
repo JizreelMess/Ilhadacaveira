@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 import static menugg.Questoes.questao;
 
 public class Rodando extends javax.swing.JFrame {
-    
+
     public Rodando() {
         initComponents();
         ressetaDados();
@@ -271,9 +271,9 @@ public class Rodando extends javax.swing.JFrame {
 
         if (contadorPergunta == -1 && isInicio == true) {
             executarPerguntas();
-        } 
+        } else {
             verificarResposta();
-        
+        }
 
 
     }//GEN-LAST:event_jButton7ActionPerformed
@@ -282,7 +282,7 @@ public class Rodando extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private String[][] listaDePerguntas = new String[2][6];
+    private final String[][] listaDePerguntas = new String[2][6];
     private int contadorPergunta = -1;
     private int pontosDeVida = 1;
     private boolean isInicio = true;
