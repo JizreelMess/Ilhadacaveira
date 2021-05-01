@@ -13,24 +13,10 @@ import javax.swing.JOptionPane;
 import static menugg.Questoes.questao;
 
 public class Rodando extends javax.swing.JFrame {
-
+    
     public Rodando() {
         initComponents();
-        jLabel6.setVisible(false);
-        jLabel7.setVisible(false);
-        jLabel8.setVisible(false);
-        jLabel9.setVisible(false);
-        jLabel10.setVisible(false);
-        jTextField1.setVisible(false);
-        jButton1.setVisible(false);
-        jButton2.setVisible(false);
-        jButton3.setVisible(false);
-        jButton4.setVisible(false);
-        jButton5.setVisible(false);
-        jButton6.setVisible(false);
-        jButton7.setText("Iniciar");
-        jTextField1.setText("");
-
+        ressetaDados();
     }
 
     /**
@@ -283,71 +269,52 @@ public class Rodando extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
 
-        if (isInicio == true) {
-            executarPrimeira();
-        } else if (pontosTotal != 0) {
-            mudarlabel();
-        }
+        if (contadorPergunta == -1 && isInicio == true) {
+            executarPerguntas();
+        } 
+            verificarResposta();
+        
+
+
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
 
     }//GEN-LAST:event_jTextField1ActionPerformed
-    
-    String[][] listaDePerguntas = new String[2][6];
-    int contadorPergunta = 1;
-    int pontosTotal = 1;
-    int contador = 0;
-    boolean isInicio = true;
 
-    private void mudarlabel() {
+    private String[][] listaDePerguntas = new String[2][6];
+    private int contadorPergunta = -1;
+    private int pontosDeVida = 1;
+    private boolean isInicio = true;
 
-        String resposta = jTextField1.getText();
+    private void verificarResposta() {
 
-        if (verificaResposta(resposta.toLowerCase())) {
+        String resposta = jTextField1.getText().toLowerCase();
+
+        if (verificaResposta(resposta)) {
             JOptionPane.showMessageDialog(null, "CERTO ");
             jTextField1.setText("");
-            executarDemais();
-            contador++;
             contadorPergunta++;
-        } else if (isInicio == false && contador == 0) {
-            JOptionPane.showMessageDialog(null, "Errou!!! ");
-            isInicio = true;
-            jTextField1.setText("");
-            pontosTotal--;
-            verificaVidaDoJogador();
-            executarPrimeira();
+            executarPerguntas();
 
         } else {
             JOptionPane.showMessageDialog(null, "Errou!!! ");
             jTextField1.setText("");
-            pontosTotal--;
+            pontosDeVida--;
             verificaVidaDoJogador();
-            executarPrimeira();
+
         }
     }
 
-    private void executarPrimeira() {
-        setVisible();
-        setColorText();
-        String questao = questao(listaDePerguntas)[0][0];
-        String alternativa1 = questao(listaDePerguntas)[0][1];
-        String alternativa2 = questao(listaDePerguntas)[0][2];
-        String alternativa3 = questao(listaDePerguntas)[0][3];
-        String alternativa4 = questao(listaDePerguntas)[0][4];
-
-        jLabel6.setText(questao);
-        jLabel7.setText(alternativa1);
-        jLabel8.setText(alternativa2);
-        jLabel9.setText(alternativa3);
-        jLabel10.setText(alternativa4);
-        
-        isInicio = false;
-    }
-
-    private void executarDemais() {
+    private void executarPerguntas() {
 
         if (contadorPergunta <= listaDePerguntas.length - 1) {
+            if (contadorPergunta == -1) {
+                isInicio = false;
+                contadorPergunta++;
+                setVisible();
+            }
+
             String questao = questao(listaDePerguntas)[contadorPergunta][0];
             String alternativa1 = questao(listaDePerguntas)[contadorPergunta][1];
             String alternativa2 = questao(listaDePerguntas)[contadorPergunta][2];
@@ -362,44 +329,47 @@ public class Rodando extends javax.swing.JFrame {
 
         } else {
             JOptionPane.showMessageDialog(null, " FIM DE JOGO ");
+            ressetaDados();
             mostraFimDaHistoria();
-            executarPrimeira();
+
         }
     }
 
     private boolean verificaResposta(String resposta) {
-        return resposta.equals(listaDePerguntas[contador][5]);
+        return resposta.equals(listaDePerguntas[contadorPergunta][5]);
 
     }
 
     private void verificaVidaDoJogador() {
-        if (pontosTotal == 0) {
+        if (pontosDeVida == 0) {
             Gameover menuinicial = new Gameover();
             menuinicial.setVisible(true);
             ressetaDados();
-            jTextField1.setText("");
+            jTextField1.setText(" ");
 
         }
 
     }
 
     private void mostraFimDaHistoria() {
-        jLabel6.setVisible(false);
-        jLabel7.setVisible(false);
-        jLabel8.setVisible(false);
-        jLabel9.setVisible(false);
-        jLabel10.setVisible(false);
-        jTextField1.setVisible(false);
         ressetaDados();
         JOptionPane.showMessageDialog(null, " HISTORIA DO FIM DO JOGO ");
 
     }
 
     private void ressetaDados() {
+        jLabel6.setVisible(false);
+        jLabel7.setVisible(false);
+        jLabel8.setVisible(false);
+        jLabel9.setVisible(false);
+        jLabel10.setVisible(false);
+        jTextField1.setVisible(false);
+        jButton7.setText("Iniciar");
+
         isInicio = true;
-        pontosTotal = 1;
-        contadorPergunta = 1;
-        contador = 0;
+        pontosDeVida = 1;
+        contadorPergunta = -1;
+
     }
 
     private void setVisible() {
@@ -415,7 +385,6 @@ public class Rodando extends javax.swing.JFrame {
     }
 
     private void setColorText() {
-
         jLabel6.setForeground(Color.red);
         jLabel7.setForeground(Color.red);
         jLabel8.setForeground(Color.red);
