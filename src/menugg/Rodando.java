@@ -289,8 +289,8 @@ public class Rodando extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void validaEntrada(String resposta) {
-        for (int i = 0; i <= respostasDeEntrada.length - 1; i++) {
-            if (respostasDeEntrada[i].equals(resposta)) {
+        for (String alternativa : respostasDeEntrada) {
+            if (alternativa.equals(resposta)) {
                 verificarResposta(resposta);
                 return;
             }
