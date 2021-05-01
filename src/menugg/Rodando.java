@@ -14,6 +14,12 @@ import static menugg.Questoes.questao;
 
 public class Rodando extends javax.swing.JFrame {
 
+    private final String[][] listaDePerguntas = new String[2][6];
+    private final String[] respostasDeEntrada = {"a", "b", "c", "d"};
+    private int contadorPergunta = -1;
+    private int pontosDeVida = 1;
+    private boolean isInicio = true;
+
     public Rodando() {
         initComponents();
         ressetaDados();
@@ -268,11 +274,11 @@ public class Rodando extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButtonMenuItem2ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-
+        String resposta = jTextField1.getText().toLowerCase();
         if (contadorPergunta == -1 && isInicio == true) {
             executarPerguntas();
         } else {
-            verificarResposta();
+            validaEntrada(resposta);
         }
 
 
@@ -282,16 +288,20 @@ public class Rodando extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private final String[][] listaDePerguntas = new String[2][6];
-    private int contadorPergunta = -1;
-    private int pontosDeVida = 1;
-    private boolean isInicio = true;
+    private void validaEntrada(String resposta) {
+        for (int i = 0; i <= respostasDeEntrada.length - 1; i++) {
+            if (respostasDeEntrada[i].equals(resposta)) {
+                verificarResposta(resposta);
+                return;
+            }
+        }
+        JOptionPane.showMessageDialog(null, " Digite uma resposta válida ");
+        jTextField1.setText("");
+    }
 
-    private void verificarResposta() {
+    private void verificarResposta(String resposta) {
 
-        String resposta = jTextField1.getText().toLowerCase();
-
-        if (verificaResposta(resposta)) {
+        if (validaResposta(resposta)) {
             JOptionPane.showMessageDialog(null, "CERTO ");
             jTextField1.setText("");
             contadorPergunta++;
@@ -335,7 +345,7 @@ public class Rodando extends javax.swing.JFrame {
         }
     }
 
-    private boolean verificaResposta(String resposta) {
+    private boolean validaResposta(String resposta) {
         return resposta.equals(listaDePerguntas[contadorPergunta][5]);
 
     }
@@ -345,7 +355,7 @@ public class Rodando extends javax.swing.JFrame {
             Gameover menuinicial = new Gameover();
             menuinicial.setVisible(true);
             ressetaDados();
-            jTextField1.setText(" ");
+            jTextField1.setText("");
 
         }
 
