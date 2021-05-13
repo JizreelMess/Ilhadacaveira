@@ -109,11 +109,12 @@ public class Menu2 extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Rodando menuinicial = new Rodando(); menuinicial.setVisible(true);
+         setVisible(false);
         // Abre tela do jogo.
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        Menutut menuinicial = new Menutut(); menuinicial.setVisible(true); // Abre tela de tutorial.
+        Finalbom menuinicial = new Finalbom(); menuinicial.setVisible(true); // Abre tela de tutorial.
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
