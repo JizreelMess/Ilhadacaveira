@@ -31,7 +31,7 @@ public class Menucre extends javax.swing.JFrame {
 
         jDialog1 = new javax.swing.JDialog();
         jPanel2 = new javax.swing.JPanel();
-        ImageIcon icon = new ImageIcon(getClass().getResource("/imagem/creditos.jpg"));
+        ImageIcon icon = new ImageIcon(getClass().getResource("/imagem/ilha.png"));
         Image image =  icon.getImage();
         jPanel1 = new javax.swing.JPanel(){
             public void paintComponent(Graphics g){
@@ -64,6 +64,7 @@ public class Menucre extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jButton1.setText("VOLTAR");
         jButton1.addActionListener(new java.awt.event.ActionListener() {

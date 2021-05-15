@@ -49,7 +49,7 @@
                       <Component id="jButton1" max="32767" attributes="0"/>
                       <Component id="jButton3" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="140" max="32767" attributes="0"/>
+                  <EmptySpace pref="120" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -62,7 +62,7 @@
                   <Component id="jButton2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jButton3" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="253" max="32767" attributes="0"/>
+                  <EmptySpace pref="247" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -70,6 +70,9 @@
       <SubComponents>
         <Component class="javax.swing.JButton" name="jButton1">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial Black" size="11" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="INICIAR"/>
           </Properties>
           <Events>
@@ -78,6 +81,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButton2">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial Black" size="11" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="TUTORIAL"/>
           </Properties>
           <Events>
@@ -86,6 +92,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButton3">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial Black" size="11" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="VOLTAR"/>
           </Properties>
           <Events>

@@ -44,6 +44,7 @@ public class Menu2 extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jButton1.setFont(new java.awt.Font("Arial Black", 1, 11)); // NOI18N
         jButton1.setText("INICIAR");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -51,6 +52,7 @@ public class Menu2 extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setFont(new java.awt.Font("Arial Black", 1, 11)); // NOI18N
         jButton2.setText("TUTORIAL");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -58,6 +60,7 @@ public class Menu2 extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setFont(new java.awt.Font("Arial Black", 1, 11)); // NOI18N
         jButton3.setText("VOLTAR");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -75,7 +78,7 @@ public class Menu2 extends javax.swing.JFrame {
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(140, Short.MAX_VALUE))
+                .addContainerGap(120, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -86,7 +89,7 @@ public class Menu2 extends javax.swing.JFrame {
                 .addComponent(jButton2)
                 .addGap(18, 18, 18)
                 .addComponent(jButton3)
-                .addContainerGap(253, Short.MAX_VALUE))
+                .addContainerGap(247, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -109,11 +112,12 @@ public class Menu2 extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Rodando menuinicial = new Rodando(); menuinicial.setVisible(true);
+         setVisible(false);
         // Abre tela do jogo.
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        Menutut menuinicial = new Menutut(); menuinicial.setVisible(true); // Abre tela de tutorial.
+        Finalbom menuinicial = new Finalbom(); menuinicial.setVisible(true); // Abre tela de tutorial.
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

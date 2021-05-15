@@ -6,92 +6,40 @@
 package menugg;
 
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Image;
 import java.awt.Graphics;
 import java.util.Random;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
+import static menugg.Historia.historia;
 import static menugg.Questoes.questao;
 
-
-
-/**
- *
- * @author Jizreel
- */
 public class Rodando extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Rodando
-     */
-    int pontostotal=20;
+    private final String[][] listaDePerguntas = new String[12][6];
+    private final String[] respostasDeEntrada = {"a", "b", "c", "d"};
+    private final String [] historiaDojogo = new String[4];
+    private int contadorPergunta = -1;
+    private int pontosDeVida;
+    public static int contadordeAcerto;
+    public static int contadordeErro;
+    public static int  pontos = 5;
+    private boolean isInicio = true;
+    private int r;
+    private int i=1;
+
+
     public Rodando() {
         initComponents();
-           jLabel6.setVisible(false);
-             jLabel7.setVisible(false);
-             jLabel8.setVisible(false);
-             jLabel9.setVisible(false);
-             jLabel10.setVisible(false);
-             jTextField1.setVisible(false);
-             jButton1.setVisible(false);
-             jButton2.setVisible(false);
-             jButton3.setVisible(false);
-             jButton4.setVisible(false);
-             jButton5.setVisible(false);
-             jButton6.setVisible(false);
-             jButton7.setText("Iniciar");
-              jTextField1.setText("Digite:");
-        /*
-         String q = null;
-         JLabel label = new JLabel(); 
-        label = new JLabel(questao1(q));
-        jPanel1.add(label);
-        label.setBounds(90, 400, 300, 50);
-       label.setForeground(Color.WHITE);
-        add(jPanel1);
+        ressetaDados(); 
         
-        String a = null;
-        JLabel alt = new JLabel(); 
-        label = new JLabel(alternativa(a));
-        jPanel1.add(label);
-        label.setBounds(50, 450, 300, 50);
-       label.setForeground(Color.WHITE);
-        add(jPanel1);
-     
-        String b = null;
-        JLabel altB = new JLabel(); 
-        label = new JLabel(alternativaB(b));
-        jPanel1.add(label);
-        label.setBounds(250, 450, 250, 50);
-       label.setForeground(Color.WHITE);
-        add(jPanel1);
-        
-        
-        String c = null;
-        JLabel altC = new JLabel(); 
-        label = new JLabel(alternativaC(c));
-        jPanel1.add(label);
-        label.setBounds(400, 450, 250, 50);
-       label.setForeground(Color.WHITE);
-        add(jPanel1);
-        
-        
-        
-        
-        String d = null;
-        JLabel altD = new JLabel(); 
-        label = new JLabel(alternativaD(d));
-        jPanel1.add(label);
-        label.setBounds(620, 450, 250, 50);
-       label.setForeground(Color.WHITE);
-        add(jPanel1);
-        */
+        jPanel1.setVisible(true);
+        jLabel13.setVisible(true);
+        String texto = historia(historiaDojogo)[0];
+        jLabel13.setText(texto);
+        jLabel13.setForeground(Color.black);
         
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -118,10 +66,6 @@ public class Rodando extends javax.swing.JFrame {
                 g.drawImage(image,0,0,getWidth(),getHeight(),this);
             }
         };
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -134,6 +78,10 @@ public class Rodando extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        panel1 = new java.awt.Panel();
+        jLabel13 = new javax.swing.JLabel();
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu5 = new javax.swing.JMenu();
         jRadioButtonMenuItem3 = new javax.swing.JRadioButtonMenuItem();
@@ -159,13 +107,7 @@ public class Rodando extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        jButton3.setText("A");
-
-        jButton4.setText("B");
-
-        jButton5.setText("C");
-
-        jButton6.setText("D");
+        jPanel1.setPreferredSize(new java.awt.Dimension(1042, 632));
 
         jButton7.setText("PROXIMA");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
@@ -174,14 +116,19 @@ public class Rodando extends javax.swing.JFrame {
             }
         });
 
+        jLabel6.setFont(new java.awt.Font("Arial Black", 1, 11)); // NOI18N
         jLabel6.setText("jLabel6");
 
+        jLabel7.setFont(new java.awt.Font("Arial Black", 1, 11)); // NOI18N
         jLabel7.setText("jLabel7");
 
+        jLabel8.setFont(new java.awt.Font("Arial Black", 1, 11)); // NOI18N
         jLabel8.setText("jLabel8");
 
+        jLabel9.setFont(new java.awt.Font("Arial Black", 1, 11)); // NOI18N
         jLabel9.setText("jLabel9");
 
+        jLabel10.setFont(new java.awt.Font("Arial Black", 1, 11)); // NOI18N
         jLabel10.setText("jLabel10");
 
         jTextField1.setText("jTextField1");
@@ -190,6 +137,34 @@ public class Rodando extends javax.swing.JFrame {
                 jTextField1ActionPerformed(evt);
             }
         });
+
+        jLabel11.setFont(new java.awt.Font("Arial Black", 1, 11)); // NOI18N
+        jLabel11.setText("jLabel11");
+
+        jLabel12.setFont(new java.awt.Font("Arial Black", 1, 11)); // NOI18N
+        jLabel12.setText("PONTOS:");
+
+        panel1.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
+        panel1.setMaximumSize(new java.awt.Dimension(250, 250));
+
+        jLabel13.setText("jLabel13");
+
+        javax.swing.GroupLayout panel1Layout = new javax.swing.GroupLayout(panel1);
+        panel1.setLayout(panel1Layout);
+        panel1Layout.setHorizontalGroup(
+            panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel1Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(jLabel13)
+                .addContainerGap(36, Short.MAX_VALUE))
+        );
+        panel1Layout.setVerticalGroup(
+            panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel1Layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(jLabel13)
+                .addContainerGap(54, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -200,10 +175,7 @@ public class Rodando extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(459, 459, 459)
                         .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(111, 111, 111)
-                        .addComponent(jLabel6))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(79, 79, 79)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -211,81 +183,79 @@ public class Rodando extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel8))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addGap(40, 40, 40))
-                                    .addComponent(jButton3))
-                                .addGap(125, 125, 125)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jButton4)
-                                    .addComponent(jLabel3))))
+                                .addComponent(jLabel2)
+                                .addGap(204, 204, 204)
+                                .addComponent(jLabel3)))
                         .addGap(141, 141, 141)
+                        .addComponent(jLabel9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel4)
+                        .addGap(119, 119, 119)
+                        .addComponent(jLabel10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton5)
-                                .addGap(139, 139, 139)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel10)
-                                        .addGap(20, 20, 20))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(jLabel5)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(jButton6)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
-                                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(69, 69, 69)))
-                                        .addComponent(jButton7))))
+                                .addGap(0, 62, Short.MAX_VALUE)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(69, 69, 69))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel9)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel4)))))
-                .addGap(64, 64, 64))
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jButton7)))
+                .addGap(70, 70, 70))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(446, 446, 446)
+                        .addComponent(jLabel12)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel11))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(59, 59, 59)
+                        .addComponent(jLabel6))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(226, Short.MAX_VALUE)
+                .addGap(20, 20, 20)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel12))
+                .addGap(40, 40, 40)
+                .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(9, 9, 9)
-                                .addComponent(jLabel6)
-                                .addGap(166, 166, 166)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jLabel8)
-                                        .addComponent(jLabel9)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(11, 11, 11)
+                            .addComponent(jLabel6)
+                            .addGap(164, 164, 164)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3))
-                                .addGap(60, 60, 60))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGap(55, 55, 55)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jLabel9)))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel2)
+                                .addComponent(jLabel3))
+                            .addGap(129, 129, 129))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addGap(69, 69, 69)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel10)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel5)
-                                        .addGap(81, 81, 81))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel10)
-                                        .addGap(81, 81, 81))
+                                        .addGap(150, 150, 150))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel4)
-                                        .addGap(72, 72, 72)))))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton3)
-                            .addComponent(jButton4)
-                            .addComponent(jButton5)
-                            .addComponent(jButton6))
-                        .addGap(46, 46, 46))
+                                        .addGap(141, 141, 141))))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -297,7 +267,12 @@ public class Rodando extends javax.swing.JFrame {
         jMenu5.setText("Opções");
 
         jRadioButtonMenuItem3.setSelected(true);
-        jRadioButtonMenuItem3.setText("Dificuldade");
+        jRadioButtonMenuItem3.setText("Tutorial");
+        jRadioButtonMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu5.add(jRadioButtonMenuItem3);
 
         jRadioButtonMenuItem2.setSelected(true);
@@ -320,10 +295,8 @@ public class Rodando extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(197, 197, 197)
                 .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(847, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addContainerGap(845, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -342,66 +315,224 @@ public class Rodando extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButtonMenuItem2ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        mudarlabel();
-        
+        String resposta = jTextField1.getText().toLowerCase();
+        if (contadorPergunta == -1 && isInicio == true) {
+            executarPerguntas();
+           
+        } else {
+            validaEntrada(resposta);
+        }
+
+
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        
+
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-        public void mudarlabel(){
+    private void jRadioButtonMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem3ActionPerformed
+         Finalbom Rodando = new Finalbom(); Rodando.setVisible(true);
+    }//GEN-LAST:event_jRadioButtonMenuItem3ActionPerformed
+
+    private void validaEntrada(String resposta) {
+        for (String alternativa : respostasDeEntrada) {
+            if (alternativa.equals(resposta)) {
+                verificarResposta(resposta);
+                return;
+            }
+        }
+        JOptionPane.showMessageDialog(null, " Digite uma resposta válida ");
+        jTextField1.setText("");
+    }
+
+    private void verificarResposta(String resposta) {
+
+        if (validaResposta(resposta)) {
+            JOptionPane.showMessageDialog(null, "CERTO, + 5 Pontos");
+            jTextField1.setText("");
+            contadorPergunta++;
+            pontos+=5;
+          //mostraHistoria();
+            //verificaVidaDoJogador();
+            contadordeAcerto+=1;
+            executarPerguntas();
+            jLabel11.setText(Integer.toString(pontos));
+
+        } else {
+            JOptionPane.showMessageDialog(null, "hahaha voce caiu na armadilha agora ira sofrer!!!, - 3 Pontos");
+            jTextField1.setText("");
+             contadorPergunta++;
+             pontos-=3;
+            //pontosDeVida--;
+            //mostraHistoria();
+            //verificaVidaDoJogador();
+            contadordeErro+=1;
+            executarPerguntas();
+            jLabel11.setText(Integer.toString(pontos));
+        }
+    }
+
+    private void executarPerguntas() {
+            Random random = new Random();
+             r = random.nextInt(12);
+             //mostraHistoria();
+        if (contadorPergunta <= listaDePerguntas.length -1) {
+            if (contadorPergunta == - 1) {
+                isInicio = false;
+                contadorPergunta++;
+                setVisible();
+            }
+
+            vidaDoJogadorZerada();
+            System.out.println(contadorPergunta);
+            String questao = questao(listaDePerguntas)[contadorPergunta][0];
+            String alternativa1 = questao(listaDePerguntas)[contadorPergunta][1];
+            String alternativa2 = questao(listaDePerguntas)[contadorPergunta][2];
+            String alternativa3 = questao(listaDePerguntas)[contadorPergunta][3];
+            String alternativa4 = questao(listaDePerguntas)[contadorPergunta][4];
+
+            jLabel6.setText(questao);
+            jLabel7.setText(alternativa1);
+            jLabel8.setText(alternativa2);
+            jLabel9.setText(alternativa3);
+            jLabel10.setText(alternativa4);
+
+        } else {
+            
+            JOptionPane.showMessageDialog(null, " FIM DE JOGO ");
+            //ressetaDados();
+            verificaVidaDoJogador();
+           // mostraFimDaHistoria();
+
+        }
+    }
+
+    private boolean validaResposta(String resposta) {
+        return resposta.equals(listaDePerguntas[contadorPergunta][5]);
+
+    }
     
-             jLabel6.setVisible(true);
-             jLabel7.setVisible(true);
-             jLabel8.setVisible(true);
-             jLabel9.setVisible(true);
-             jLabel10.setVisible(true);
-             jTextField1.setVisible(true);
-             jButton7.setText("Proxima");
-           
+    
+     private void vidaDoJogadorZerada(){
+      if(pontos<=0){
+         Gameover menuinicial = new Gameover();
+            menuinicial.setVisible(true);
+            this.dispose();
+            ressetaDados();
+            jTextField1.setText("");
+        }
+    
+    }
+
+    private void verificaVidaDoJogador() {
+        
+      if(pontos>=34){
             
-             String [][] q = new String[12][6];
-           for(int i=0;i<=11;i++){
-            
-            String teste =questao(q)[i][0].toString();
-            String teste1 =questao(q)[i][1].toString();
-            String teste2 =questao(q)[i][2].toString();
-            String teste3 =questao(q)[i][3].toString();
-            String teste4 =questao(q)[i][4].toString();
-          
-            jLabel6.setText(teste);jLabel6.setForeground(Color.red);
-            jLabel7.setText(teste1);jLabel7.setForeground(Color.red);
-            jLabel8.setText(teste2);jLabel8.setForeground(Color.red);
-            jLabel9.setText(teste3);jLabel9.setForeground(Color.red);
-            jLabel10.setText(teste4);jLabel10.setForeground(Color.red);
-          
-           
-         
-            
-            String alternativa = jTextField1.getText();
-          if(jTextField1.getText().equals("Digite:")){ 
-              JOptionPane.showMessageDialog(null, "digite a resposta!!!!! ");
-              break;
-            
-          }
-          
-           if(alternativa.equals(q[i][5])){
-              JOptionPane.showMessageDialog(null, "Acertou");
-              jTextField1.setText("Digite:");
-              pontostotal+=10;
-            
-           } else {JOptionPane.showMessageDialog(null, "Errou");
-             //Gameover menuinicial = new Gameover(); menuinicial.setVisible(true);
-             jTextField1.setText("Digite:");
-             pontostotal-=10;
-            break;
-         } 
-           }
-           if(pontostotal<20){Gameover menuinicial = new Gameover(); menuinicial.setVisible(true);}
-         } 
+        JOptionPane.showMessageDialog(null, " Final feliz, você ganhou");
+        Finalbom menuinicial = new Finalbom();
+        menuinicial.setVisible(true);
+        this.dispose();
+        ressetaDados();
+        jTextField1.setText("");
+        } else
+      {   
+            Gameover menuinicial = new Gameover();
+            menuinicial.setVisible(true);
+            this.dispose();
+            ressetaDados();
+            jTextField1.setText("");
+
+        }
+
+    }
+
+    private void mostraFimDaHistoria() {
+        ressetaDados();
+        JOptionPane.showMessageDialog(null, " HISTORIA DO FIM DO JOGO ");
+
+    }
+    
+       public static int pontuacaoFinal(){
+         int pontuacao = pontos;
+        return pontuacao;
        
-         
+    }
+       
+       
+    public static int acerto(){
+         int acerto=contadordeAcerto;
+        return acerto;
+    }
+       
+     public static int erros(){
+       int erro=contadordeErro;
+       return erro;
+    }
+    
+    
+    
+    private void mostraHistoria(){
+       if(i <= historiaDojogo.length ){
+       jLabel13.setVisible(true);
+        String texto = historia(historiaDojogo)[i];
+        jLabel13.setText(texto);
+        jLabel13.setForeground(Color.black);    
+        i++;
+        }
+      
+    }
+
+    private void ressetaDados() {
+        
+        //jLabel13.setVisible(false);
+        jLabel6.setVisible(false);
+        jLabel7.setVisible(false);
+        jLabel8.setVisible(false);
+        jLabel9.setVisible(false);
+        jLabel10.setVisible(false);
+        jLabel11.setVisible(false);
+        jLabel12.setVisible(false);
+        jTextField1.setVisible(false);
+        jButton7.setText("Iniciar");
+        //panel1.setVisible(false);
+        isInicio = true;
+        pontos = 5;
+        contadordeAcerto = 0;
+        contadordeErro = 0;
+        // pontosDeVida = 1;
+        //contadorPergunta = -1;
+
+    }
+
+    private void setVisible() {
+        
+        setColorText();
+        jLabel11.setText(Integer.toString(pontos));
+        jLabel6.setVisible(true);
+        jLabel7.setVisible(true);
+        jLabel8.setVisible(true);
+        jLabel9.setVisible(true);
+        jLabel10.setVisible(true);
+        jLabel11.setVisible(true);
+        jLabel12.setVisible(true);
+        jTextField1.setVisible(true);
+        panel1.setVisible(true);
+        jButton7.setText("Proxima");
+        jTextField1.setText("");
+    }
+
+    private void setColorText() {
+        
+        jLabel6.setForeground(Color.yellow);
+        jLabel7.setForeground(Color.green);
+        jLabel8.setForeground(Color.green);
+        jLabel9.setForeground(Color.green);
+        jLabel10.setForeground(Color.green);
+        jLabel11.setForeground(Color.green);
+        jLabel12.setForeground(Color.green);
+        
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -428,12 +559,11 @@ public class Rodando extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Rodando.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+             
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Rodando().setVisible(true);
-                 
                
             }
         });
@@ -443,13 +573,12 @@ public class Rodando extends javax.swing.JFrame {
     private java.awt.Canvas canvas1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -470,5 +599,7 @@ public class Rodando extends javax.swing.JFrame {
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem2;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem3;
     private javax.swing.JTextField jTextField1;
+    private java.awt.Panel panel1;
     // End of variables declaration//GEN-END:variables
+
 }
