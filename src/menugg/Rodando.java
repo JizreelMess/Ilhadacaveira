@@ -28,7 +28,8 @@ public class Rodando extends javax.swing.JFrame {
     public static int contadordeErro;
     public static int pontos;
     private boolean isInicio = true;
-    private int i = 1;
+    private int i = 2;
+    private int r=1;
 
     public Rodando() {
 
@@ -84,6 +85,7 @@ public class Rodando extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         panel1 = new java.awt.Panel();
         jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu5 = new javax.swing.JMenu();
         jRadioButtonMenuItem3 = new javax.swing.JRadioButtonMenuItem();
@@ -169,6 +171,8 @@ public class Rodando extends javax.swing.JFrame {
                 .addContainerGap(54, Short.MAX_VALUE))
         );
 
+        jLabel14.setText("jLabel14");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -214,7 +218,9 @@ public class Rodando extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel11))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(59, 59, 59)
+                        .addGap(9, 9, 9)
+                        .addComponent(jLabel14)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel6))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
@@ -236,7 +242,9 @@ public class Rodando extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGap(11, 11, 11)
-                            .addComponent(jLabel6)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel6)
+                                .addComponent(jLabel14))
                             .addGap(164, 164, 164)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -318,6 +326,7 @@ public class Rodando extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButtonMenuItem2ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+       
         String resposta = jTextField1.getText().toLowerCase();
         if (contadorPergunta == -1 && isInicio == true) {
             executarPerguntas();
@@ -340,6 +349,7 @@ public class Rodando extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButtonMenuItem3ActionPerformed
 
     private void validaEntrada(String resposta) {
+        //Valida a entrada de dados do usuarios, só aceitando a,b,c e d.
         for (String alternativa : respostasDeEntrada) {
             if (alternativa.equals(resposta)) {
                 verificarResposta(resposta);
@@ -351,31 +361,36 @@ public class Rodando extends javax.swing.JFrame {
     }
 
     private void verificarResposta(String resposta) {
-
+       //Verificado de resposta, contador de acertos e erros, e contado a pontuação.
         if (validaResposta(resposta)) {
+            
             JOptionPane.showMessageDialog(this, "CERTO, + 5 Pontos", "Parabéns", 1);
             jTextField1.setText("");
             contadorPergunta++;
             pontos += 5;
-            //verificaVidaDoJogador();
             contadordeAcerto += 1;
+            r+=1;
             executarPerguntas();
             jLabel11.setText(Integer.toString(pontos));
-
+       
         } else {
 
             JOptionPane.showMessageDialog(this, "hahaha voce caiu na armadilha agora ira sofrer!!!, - 3 Pontos", "Errou", 0);
             jTextField1.setText("");
             contadorPergunta++;
-            pontos -= 3;
-            //verificaVidaDoJogador();
+            pontos -= 3;           
             contadordeErro += 1;
+            r+=1;
             executarPerguntas();
             jLabel11.setText(Integer.toString(pontos));
+       
         }
     }
 
     private void executarPerguntas() {
+        // Gerado de perguntas.
+        jLabel14.setText(Integer.toString(r));
+      
         if (contadorPerguntasRepetidas != listaDePerguntas.length - 1) {
             retornaPerguntaSorteada();
         }
@@ -389,7 +404,7 @@ public class Rodando extends javax.swing.JFrame {
                 setVisible();
             }
 
-            verificaVidaDoJogador();
+            //verificaVidaDoJogador();
 
             String questao = questao(listaDePerguntas)[Integer.parseInt(pergunta)][0];
             String alternativa1 = questao(listaDePerguntas)[Integer.parseInt(pergunta)][1];
@@ -415,12 +430,13 @@ public class Rodando extends javax.swing.JFrame {
     }
 
     private boolean validaResposta(String resposta) {
+        // Confere ser alternativa escolhida e a certa, e devolver.
         return resposta.equals(listaDePerguntas[Integer.parseInt(pergunta)][5]);
-
+    
     }
 
     private void verificaVidaDoJogador() {
-
+    
         if (pontos <= 0) {
 
             Gameover menuinicial = new Gameover();
@@ -433,7 +449,7 @@ public class Rodando extends javax.swing.JFrame {
     }
 
     private void verificaPontuacaoTotalDoJogador() {
-
+     // Verifica pontuação do jogador no final das perguntas.
         if (pontos >= 34 && contadorPerguntasRepetidas == listaDePerguntas.length - 1) {
 
             JOptionPane.showMessageDialog(this, " Final feliz, você ganhou");
@@ -444,43 +460,38 @@ public class Rodando extends javax.swing.JFrame {
             jTextField1.setText("");
 
         } else if (contadorPerguntasRepetidas == listaDePerguntas.length - 1) {
-            JOptionPane.showMessageDialog(this, " Final triste, você ganhou");
-            Finalbom menuinicial = new Finalbom();
-            menuinicial.setVisible(true);
-            this.dispose();
-            ressetaDados();
-            jTextField1.setText("");
-
-        } else if (pontos <= 0) {
-
+            JOptionPane.showMessageDialog(this, " Final triste, você Perdeu");
             Gameover menuinicial = new Gameover();
             menuinicial.setVisible(true);
             this.dispose();
             ressetaDados();
             jTextField1.setText("");
 
+        } else  {
+
+            verificaVidaDoJogador();
+
         }
 
     }
 
-    private void mostraFimDaHistoria() {
-        ressetaDados();
-        JOptionPane.showMessageDialog(this, " HISTORIA DO FIM DO JOGO ");
-
-    }
+    
 
     public static int pontuacaoFinal() {
+        //Contador e retorno da pontuação final.
         int pontuacao = pontos;
         return pontuacao;
 
     }
 
     public static int acerto() {
+        //Contador de acertos
         return contadordeAcerto;
 
     }
 
     public static int erros() {
+        //Contador de erros
         return contadordeErro;
 
     }
@@ -492,7 +503,9 @@ public class Rodando extends javax.swing.JFrame {
             String texto = historia(historiaDojogo)[i];
             jLabel13.setText(texto);
             jLabel13.setForeground(Color.black);
+         
             i++;
+         
         }
 
     }
@@ -517,6 +530,7 @@ public class Rodando extends javax.swing.JFrame {
     }
 
     private void retornaPerguntaSorteada() {
+        // Sorteia as perguntas e retorna.
         Integer perguntaSort;
         int cont = 0;
 
@@ -545,6 +559,7 @@ public class Rodando extends javax.swing.JFrame {
     }
 
     private boolean isPerguntaRepetida(String pergunta) {
+        //Confere ser pergunta já passou.
         for (int i = 0; i <= listaDePerguntasQuePassaram.length - 1; i++) {
             if (pergunta.equals(listaDePerguntasQuePassaram[i])) {
                 return true;
@@ -556,6 +571,7 @@ public class Rodando extends javax.swing.JFrame {
     private void setVisible() {
         // Altera a visibilidade de labels e bottons. 
         setColorText();
+        jLabel14.setText(Integer.toString(r));
         jLabel11.setText(Integer.toString(pontos));
         jLabel6.setVisible(true);
         jLabel7.setVisible(true);
@@ -628,6 +644,7 @@ public class Rodando extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

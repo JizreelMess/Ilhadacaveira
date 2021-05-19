@@ -70,10 +70,10 @@ public abstract class Questoes {
         q[8][5] = "a"; //alternativa certa.
 
         q[9][0] = "Dadas as expressões A= -a^2 – 2a + 5 e B = b^2+ 2b + 5:";
-        q[9][1] = "A)Se a=2 e b=-2";
-        q[9][2] = "B)Se a=2 e b=2";
-        q[9][3] = "C)Se a=-2 e b=-2";
-        q[9][4] = "D)Se a=-2 e b=2";
+        q[9][1] = "A)Se a=2 |b=-2";
+        q[9][2] = "B)Se a=2 |b=2";
+        q[9][3] = "C)Se a=-2|b=-2";
+        q[9][4] = "D)Se a=-2|b=2";
         q[9][5] = "c"; //alternativa certa.
 
         q[10][0] = "Qual a solução da equação: 5(x + 3) - 2(x - 1) = 20?";

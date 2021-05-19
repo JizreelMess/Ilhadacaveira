@@ -10,7 +10,7 @@ package menugg;
  * @author Jizreel
  */
 public class Historia {
-    
+    // Vetor que armazena a historia do jogo.
     static String [] historia(String [] h){
         
         h[0]= "<html><br>Johnny um caçador de antiguidades,<br> recebe uma encomenda misteriosa em sua<br> casa de um parente que esta desaparecido<br> há 2 anos, "
@@ -36,7 +36,7 @@ public class Historia {
         
         h[9]="PODE PELO MENOS DESCREVER O PRÊMIO QUE EU VOU GANHAR QUANDO EU TERMINAR POR AQUI?";
         
-        h[10]="<html>O PRÊMIO É O CHENCIMENTO QUE ESTÁ GUARDADO DENTRO DE UM PERGAMINHO<br> EM UM SANTUARIO NESTA CAVERNA ONDE ELE CONTEM<br> TODO O CONHECIMENTO DE UMA RAÇA ABSOLUTA ALÉM DA CONCIÊNCIA</html>";
+        h[10]="<html>O PRÊMIO É O CONHECIMENTO QUE ESTÁ GUARDADO DENTRO DE UM PERGAMINHO<br> EM UM SANTUARIO NESTA CAVERNA ONDE ELE CONTEM<br> TODO O CONHECIMENTO DE UMA RAÇA ABSOLUTA ALÉM DA CONCIÊNCIA</html>";
         
         h[11]="ALGUEM JÁ VEIO AQUI ANTES? MELHOR AINDA ALGUEM CHAMADO HANK VEIO AQUI?\n" +
 "";
