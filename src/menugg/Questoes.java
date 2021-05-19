@@ -2,9 +2,10 @@ package menugg;
 
 public abstract class Questoes {
 
+     // Matriz que armazena as perguntas do jogo.
     static String[][] questao(String[][] q) {
 
-        q[0][0] = "questão 1";
+        q[0][0] = "<html>Em uma empresa de 260 funcionários, 70 gostam de milkshake de creme,<br>90 de milkshake de morango e 100 não gostam dos dois milkshake.<br> Quantos funcionários não gostam de nenhum dos sabores?</html>";
         q[0][1] = "A)0";
         q[0][2] = "B)10";
         q[0][3] = "C)40";

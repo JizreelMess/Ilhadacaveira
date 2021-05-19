@@ -20,10 +20,13 @@ public class Finalbom extends javax.swing.JFrame {
         
         initComponents();
         
+         // Carrega a pontuação final.
         int ver = Rodando.pontuacaoFinal();
         jLabel5.setText(Integer.toString(ver));
-        int acerto = Rodando.acerto();
+         // Carrega quantidade de acertos.
+        int acerto = Rodando.acerto();  
         jLabel6.setText(Integer.toString(acerto));
+         // Carrega quantidade de erros.
         int erro = Rodando.erros();
         jLabel7.setText(Integer.toString(erro));
     }
