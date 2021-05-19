@@ -9,7 +9,6 @@ import java.awt.Color;
 import java.awt.Image;
 import java.awt.Graphics;
 import java.util.Random;
-import javafx.scene.control.DialogPane;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import static menugg.Historia.historia;
@@ -20,19 +19,19 @@ public class Rodando extends javax.swing.JFrame {
     private Random random = new Random();
     private final String[][] listaDePerguntas = new String[12][6];
     private final String[] respostasDeEntrada = {"a", "b", "c", "d"};
-    private String[] listaDePerguntasQuePassaram = new String[listaDePerguntas.length-1];
+    private final String[] listaDePerguntasQuePassaram = new String[listaDePerguntas.length - 1];
     private final String[] historiaDojogo = new String[15];
     private int contadorPergunta = -1;
-    private int contadorPerguntasRepetidas;
+    private int contadorPerguntasRepetidas = 0;
     private String pergunta;
     public static int contadordeAcerto;
     public static int contadordeErro;
-    public static int pontos = 5;
+    public static int pontos;
     private boolean isInicio = true;
     private int i = 1;
 
     public Rodando() {
-        
+
         initComponents();
         ressetaDados();
         // Carrega painel e primeira historia do jogo.
@@ -335,9 +334,9 @@ public class Rodando extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jRadioButtonMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem3ActionPerformed
-     // mensagem de tutorial.
-        JOptionPane.showMessageDialog(this, "<html>Ao clicar em iniciar, você será apresentado a um mundo de fantasia,<br> o jogo  terá o número “12\" de questões, cada uma com 4 alternativas<br> sendo somente uma a correta." +
-    "<br>Cada questão tem uma pontuação a ser adquirida ou perdida,<br> +”X”, - “X”, o jogador  iniciar com pontuação igual a 5,<br> tendo que acertar 8  questões  para concluir o jogo.</html>","Tutorial",3);
+        // mensagem de tutorial.
+        JOptionPane.showMessageDialog(this, "<html>Ao clicar em iniciar, você será apresentado a um mundo de fantasia,<br> o jogo  terá o número “12\" de questões, cada uma com 4 alternativas<br> sendo somente uma a correta."
+                + "<br>Cada questão tem uma pontuação a ser adquirida ou perdida,<br> +”X”, - “X”, o jogador  iniciar com pontuação igual a 5,<br> tendo que acertar 8  questões  para concluir o jogo.</html>", "Tutorial", 3);
     }//GEN-LAST:event_jRadioButtonMenuItem3ActionPerformed
 
     private void validaEntrada(String resposta) {
@@ -347,14 +346,14 @@ public class Rodando extends javax.swing.JFrame {
                 return;
             }
         }
-        JOptionPane.showMessageDialog(this, " Digite uma resposta válida ","Atenção",2);
+        JOptionPane.showMessageDialog(this, " Digite uma resposta válida ", "Atenção", 2);
         jTextField1.setText("");
     }
 
     private void verificarResposta(String resposta) {
 
         if (validaResposta(resposta)) {
-            JOptionPane.showMessageDialog(this, "CERTO, + 5 Pontos","Parabéns",1);
+            JOptionPane.showMessageDialog(this, "CERTO, + 5 Pontos", "Parabéns", 1);
             jTextField1.setText("");
             contadorPergunta++;
             pontos += 5;
@@ -364,8 +363,8 @@ public class Rodando extends javax.swing.JFrame {
             jLabel11.setText(Integer.toString(pontos));
 
         } else {
-            
-            JOptionPane.showMessageDialog(this, "hahaha voce caiu na armadilha agora ira sofrer!!!, - 3 Pontos","Errou",0);
+
+            JOptionPane.showMessageDialog(this, "hahaha voce caiu na armadilha agora ira sofrer!!!, - 3 Pontos", "Errou", 0);
             jTextField1.setText("");
             contadorPergunta++;
             pontos -= 3;
@@ -377,9 +376,11 @@ public class Rodando extends javax.swing.JFrame {
     }
 
     private void executarPerguntas() {
-       retornaPerguntaSorteada();
+        if (contadorPerguntasRepetidas != listaDePerguntas.length - 1) {
+            retornaPerguntaSorteada();
+        }
+
         mostraHistoria();
-        
 
         if (contadorPergunta <= listaDePerguntas.length - 1) {
             if (contadorPergunta == - 1) {
@@ -387,10 +388,9 @@ public class Rodando extends javax.swing.JFrame {
                 contadorPergunta++;
                 setVisible();
             }
-            
+
             verificaVidaDoJogador();
-            //System.out.println("pergunta "+pergunta);
-            System.out.println(contadorPergunta);
+
             String questao = questao(listaDePerguntas)[Integer.parseInt(pergunta)][0];
             String alternativa1 = questao(listaDePerguntas)[Integer.parseInt(pergunta)][1];
             String alternativa2 = questao(listaDePerguntas)[Integer.parseInt(pergunta)][2];
@@ -411,7 +411,7 @@ public class Rodando extends javax.swing.JFrame {
             // mostraFimDaHistoria();
 
         }
-    
+
     }
 
     private boolean validaResposta(String resposta) {
@@ -420,9 +420,9 @@ public class Rodando extends javax.swing.JFrame {
     }
 
     private void verificaVidaDoJogador() {
-        
+
         if (pontos <= 0) {
-            
+
             Gameover menuinicial = new Gameover();
             menuinicial.setVisible(true);
             this.dispose();
@@ -434,7 +434,7 @@ public class Rodando extends javax.swing.JFrame {
 
     private void verificaPontuacaoTotalDoJogador() {
 
-        if (pontos >= 34 && contadorPergunta == listaDePerguntas.length - 1) {
+        if (pontos >= 34 && contadorPerguntasRepetidas == listaDePerguntas.length - 1) {
 
             JOptionPane.showMessageDialog(this, " Final feliz, você ganhou");
             Finalbom menuinicial = new Finalbom();
@@ -442,9 +442,17 @@ public class Rodando extends javax.swing.JFrame {
             this.dispose();
             ressetaDados();
             jTextField1.setText("");
-          
-        } else {
-            
+
+        } else if (contadorPerguntasRepetidas == listaDePerguntas.length - 1) {
+            JOptionPane.showMessageDialog(this, " Final triste, você ganhou");
+            Finalbom menuinicial = new Finalbom();
+            menuinicial.setVisible(true);
+            this.dispose();
+            ressetaDados();
+            jTextField1.setText("");
+
+        } else if (pontos <= 0) {
+
             Gameover menuinicial = new Gameover();
             menuinicial.setVisible(true);
             this.dispose();
@@ -478,7 +486,7 @@ public class Rodando extends javax.swing.JFrame {
     }
 
     private void mostraHistoria() {
-      //Carrega a historia do jogo, junto das perguntas.
+        //Carrega a historia do jogo, junto das perguntas.
         if (i <= historiaDojogo.length) {
             jLabel13.setVisible(true);
             String texto = historia(historiaDojogo)[i];
@@ -490,7 +498,7 @@ public class Rodando extends javax.swing.JFrame {
     }
 
     private void ressetaDados() {
-     
+
         // Altera a visibilidade e dados contidos pra posição iniciar. 
         jLabel6.setVisible(false);
         jLabel7.setVisible(false);
@@ -506,13 +514,12 @@ public class Rodando extends javax.swing.JFrame {
         contadordeAcerto = 0;
         contadordeErro = 0;
 
-
     }
 
     private void retornaPerguntaSorteada() {
         Integer perguntaSort;
         int cont = 0;
-        lerVetor();
+
         if (pergunta == null) {
             Integer primeiraPergunta = random.nextInt(listaDePerguntas.length - 1);
             pergunta = primeiraPergunta.toString();
@@ -520,6 +527,8 @@ public class Rodando extends javax.swing.JFrame {
             return;
         } else {
             listaDePerguntasQuePassaram[contadorPerguntasRepetidas] = pergunta;
+
+            verificaPontuacaoTotalDoJogador();
             contadorPerguntasRepetidas++;
         }
 
@@ -530,9 +539,9 @@ public class Rodando extends javax.swing.JFrame {
                 break;
             }
             cont++;
-           isPerguntaRepetida(pergunta);
+            isPerguntaRepetida(pergunta);
         }
-       System.out.println("ENROU1");
+
     }
 
     private boolean isPerguntaRepetida(String pergunta) {
@@ -562,7 +571,7 @@ public class Rodando extends javax.swing.JFrame {
     }
 
     private void setColorText() {
-         // Altera a cor de labels. 
+        // Altera a cor de labels. 
         jLabel6.setForeground(Color.yellow);
         jLabel7.setForeground(Color.green);
         jLabel8.setForeground(Color.green);
@@ -571,12 +580,6 @@ public class Rodando extends javax.swing.JFrame {
         jLabel11.setForeground(Color.green);
         jLabel12.setForeground(Color.green);
 
-    }
-
-    public void lerVetor() {
-        for (String vet : listaDePerguntasQuePassaram) {
-            System.out.println("repeteco" + vet);
-        }
     }
 
     /**
