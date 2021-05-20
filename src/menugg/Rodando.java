@@ -35,6 +35,7 @@ public class Rodando extends javax.swing.JFrame {
 
         initComponents();
         ressetaDados();
+        
         // Carrega painel e primeira historia do jogo.
         jPanel1.setVisible(true);
         jLabel13.setVisible(true);
@@ -171,6 +172,7 @@ public class Rodando extends javax.swing.JFrame {
                 .addContainerGap(54, Short.MAX_VALUE))
         );
 
+        jLabel14.setFont(new java.awt.Font("Arial Black", 1, 11)); // NOI18N
         jLabel14.setText("jLabel14");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -326,7 +328,7 @@ public class Rodando extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButtonMenuItem2ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-       
+       // Evento que iniciar as perguntas e verifcação.
         String resposta = jTextField1.getText().toLowerCase();
         if (contadorPergunta == -1 && isInicio == true) {
             executarPerguntas();
@@ -404,7 +406,7 @@ public class Rodando extends javax.swing.JFrame {
                 setVisible();
             }
 
-            //verificaVidaDoJogador();
+           
 
             String questao = questao(listaDePerguntas)[Integer.parseInt(pergunta)][0];
             String alternativa1 = questao(listaDePerguntas)[Integer.parseInt(pergunta)][1];
@@ -421,9 +423,9 @@ public class Rodando extends javax.swing.JFrame {
         } else {
 
             JOptionPane.showMessageDialog(this, " FIM DE JOGO ");
-            //ressetaDados();
+          
             verificaPontuacaoTotalDoJogador();
-            // mostraFimDaHistoria();
+          
 
         }
 
@@ -520,6 +522,7 @@ public class Rodando extends javax.swing.JFrame {
         jLabel10.setVisible(false);
         jLabel11.setVisible(false);
         jLabel12.setVisible(false);
+        jLabel14.setVisible(false);
         jTextField1.setVisible(false);
         jButton7.setText("Iniciar");
         isInicio = true;
@@ -580,6 +583,7 @@ public class Rodando extends javax.swing.JFrame {
         jLabel10.setVisible(true);
         jLabel11.setVisible(true);
         jLabel12.setVisible(true);
+         jLabel14.setVisible(true);
         jTextField1.setVisible(true);
         panel1.setVisible(true);
         jButton7.setText("Proxima");
@@ -595,6 +599,7 @@ public class Rodando extends javax.swing.JFrame {
         jLabel10.setForeground(Color.green);
         jLabel11.setForeground(Color.green);
         jLabel12.setForeground(Color.green);
+        jLabel14.setForeground(Color.yellow);
 
     }
 
