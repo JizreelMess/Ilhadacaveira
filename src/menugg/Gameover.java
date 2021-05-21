@@ -177,6 +177,7 @@ public class Gameover extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Menuinicial Gameover = new Menuinicial(); Gameover.setVisible(true); 
         this.dispose();
+        //Volta ao menu inicial.
     }//GEN-LAST:event_jButton1ActionPerformed
 
      

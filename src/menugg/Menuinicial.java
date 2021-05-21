@@ -165,7 +165,8 @@ public class Menuinicial extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        Menucre menuinicial = new Menucre(); menuinicial.setVisible(true);  // vai pro menu dos creditos 
+          JOptionPane.showMessageDialog(this, "<html>Jogo Projetado para o Projeto integrador 1 de ADS do ano de 2021, Muito obrigado por estat jogando nosso game e ajudando nosso deenvolvimento, queremos agradecer os professores e nossos"
+                  + "colegas de turmas pela ajuda e apois, obrigado.</html>","Tutorial",3);  // vai pro menu dos creditos 
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

@@ -22,7 +22,7 @@ public class Menu2 extends javax.swing.JFrame {
      */
     public Menu2() {
         initComponents();
-        carregaHistoria();
+        carregaHistoria();//Carregar vetor da historia.
     }
 
     /**

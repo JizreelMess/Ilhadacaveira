@@ -203,6 +203,7 @@ public class Finalbom extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
          Menuinicial Finalbom = new Menuinicial(); Finalbom.setVisible(true);
          this.dispose();
+         //Volta ao menu inicial.
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
