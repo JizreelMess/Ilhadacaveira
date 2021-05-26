@@ -8,11 +8,17 @@ package menugg;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.Graphics;
+import java.io.File;
 import java.util.Random;
+import javafx.embed.swing.JFXPanel;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import static menugg.Historia.historia;
+import static menugg.Historiastephen.historiadois;
 import static menugg.Questoes.questao;
+import static sun.audio.AudioPlayer.player;
 
 public class Rodando extends javax.swing.JFrame {
 
@@ -42,6 +48,8 @@ public class Rodando extends javax.swing.JFrame {
         String texto = historia(historiaDojogo)[1];
         jLabel13.setText(texto);
         jLabel13.setForeground(Color.black);
+        jTextField2.setVisible(false);
+        jTextField2.setText("");
 
     }
 
@@ -87,6 +95,9 @@ public class Rodando extends javax.swing.JFrame {
         panel1 = new java.awt.Panel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu5 = new javax.swing.JMenu();
         jRadioButtonMenuItem3 = new javax.swing.JRadioButtonMenuItem();
@@ -175,6 +186,22 @@ public class Rodando extends javax.swing.JFrame {
         jLabel14.setFont(new java.awt.Font("Arial Black", 1, 11)); // NOI18N
         jLabel14.setText("jLabel14");
 
+        jTextField2.setText("jTextField2");
+
+        jButton3.setText("Jhoony");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jButton4.setText("Stephen");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -213,12 +240,15 @@ public class Rodando extends javax.swing.JFrame {
                         .addComponent(jButton7)))
                 .addGap(70, 70, 70))
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(446, 446, 446)
+                .addComponent(jLabel12)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18))
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(446, 446, 446)
-                        .addComponent(jLabel12)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel11))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(9, 9, 9)
                         .addComponent(jLabel14)
@@ -226,16 +256,26 @@ public class Rodando extends javax.swing.JFrame {
                         .addComponent(jLabel6))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
-                        .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addComponent(jButton3)
+                        .addGap(60, 60, 60)
+                        .addComponent(jButton4)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel12))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel11)
+                            .addComponent(jLabel12)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(40, 40, 40)
                 .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
@@ -275,6 +315,11 @@ public class Rodando extends javax.swing.JFrame {
                             .addComponent(jButton7)
                             .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(49, 49, 49))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton3)
+                    .addComponent(jButton4)))
         );
 
         jMenu5.setText("Opções");
@@ -324,7 +369,8 @@ public class Rodando extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jRadioButtonMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem2ActionPerformed
-        this.dispose();// fechar jogo 
+         Menuinicial Finalbom = new Menuinicial(); Finalbom.setVisible(true);
+         this.dispose();
     }//GEN-LAST:event_jRadioButtonMenuItem2ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
@@ -336,7 +382,7 @@ public class Rodando extends javax.swing.JFrame {
         } else {
             validaEntrada(resposta);
         }
-
+        
 
     }//GEN-LAST:event_jButton7ActionPerformed
 
@@ -349,6 +395,14 @@ public class Rodando extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "<html>Ao clicar em iniciar, você será apresentado a um mundo de fantasia,<br> o jogo  terá o número “12\" de questões, cada uma com 4 alternativas<br> sendo somente uma a correta."
                 + "<br>Cada questão tem uma pontuação a ser adquirida ou perdida,<br> +”X”, - “X”, o jogador  iniciar com pontuação igual a 5,<br> tendo que acertar 8  questões  para concluir o jogo.</html>", "Tutorial", 3);
     }//GEN-LAST:event_jRadioButtonMenuItem3ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+         jTextField2.setText(jTextField2.getText()+"1");
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        jTextField2.setText(jTextField2.getText()+"2");
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     private void validaEntrada(String resposta) {
         //Valida a entrada de dados do usuarios, só aceitando a,b,c e d.
@@ -499,15 +553,29 @@ public class Rodando extends javax.swing.JFrame {
     }
 
     private void mostraHistoria() {
+      String opcao = jTextField2.getText();
+      int op =Integer.parseInt(opcao);
+      switch(op){
+          case 1:
         //Carrega a historia do jogo, junto das perguntas.
         if (i <= historiaDojogo.length) {
             jLabel13.setVisible(true);
             String texto = historia(historiaDojogo)[i];
             jLabel13.setText(texto);
             jLabel13.setForeground(Color.black);
-         
             i++;
-         
+            break;
+      }
+          case 2: 
+                if (i <= historiaDojogo.length) {
+            jLabel13.setVisible(true);
+            String texto = historiadois(historiaDojogo)[i];
+            jLabel13.setText(texto);
+            jLabel13.setForeground(Color.black);
+            i++;
+            break;
+      }
+              break;
         }
 
     }
@@ -583,9 +651,11 @@ public class Rodando extends javax.swing.JFrame {
         jLabel10.setVisible(true);
         jLabel11.setVisible(true);
         jLabel12.setVisible(true);
-         jLabel14.setVisible(true);
+        jLabel14.setVisible(true);
         jTextField1.setVisible(true);
         panel1.setVisible(true);
+        jButton3.setVisible(false);
+        jButton4.setVisible(false);
         jButton7.setText("Proxima");
         jTextField1.setText("");
     }
@@ -643,6 +713,8 @@ public class Rodando extends javax.swing.JFrame {
     private java.awt.Canvas canvas1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -670,6 +742,7 @@ public class Rodando extends javax.swing.JFrame {
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem2;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem3;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     private java.awt.Panel panel1;
     // End of variables declaration//GEN-END:variables
 
