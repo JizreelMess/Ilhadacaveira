@@ -13,40 +13,37 @@ public class Historiastephen {
     
     static String [] historiadois(String [] h){
         
-        h[0]= "<html><br>Stephen um caçador de antiguidades,<br> recebe uma encomenda misteriosa em sua<br> casa de um parente que esta desaparecido<br> há 2 anos, "
-                + "contendo uma carta codifcada,<br>coordenadas de uma localização e um mapa de uma<br> ilha nunca citada, no mundo contemporâneo.";
+        h[0]= "<html><br>Apos johnny comunicar com seu parceiro,<br> Stephen pretendia tirar um cochilo no helicoptero,<br>mas percebe que jhoony não levou seus itens<br>mas, "
+                + "imprtante de sua jornada,<br>sua arma e faca para ser defender<br> caso for atacado.";
         
-        h[1]= "<html>Após Stephen pousar o helicóptero na ilha misteriosa,<br> Stephen se equipa e parte para sua aventura,<br> mas mal sabia os desafios que o aguardavam.</html>";
+        h[1]= "<html>Jhonny,Jhonny<br>Responda é importante...  Droga parece que eu vou dar um passeio,<br> Melhor pegar tudo e conferir duas vezes antes de sair para procurá-lo.</html>";
         
-        h[2]= "<html>Após Caminhar por 2 horas,<br> Stephen acha uma estranha caverna.<br> Após isso ele monta uma barraca para descasar de sua caminhada <br> e entra em contato com o piloto pelo rádio.</html>";
+        h[2]= "<html>Por sorte stephen,<br> achou uma trilha de pegadas<br> para poder seguir <br> e por sorte elas acabavam em uma caverna.</html>";
         
-        h[3]="<html> Stephen ....Ao andar dentro da caverna Stephen<br> se depara com uma tocha e ao tentar pegar a tocha,<br> acidentalmente ela ativa um mecanismo<br> que parece ser um caminho para a tumba onde ele vai encarar os desafios</html>";
+        h[3]="<html> Stephen .... entrou na caverna,<br>mas não demorou muito para achar,<br> os rastros de jhoony, Partir do <br> momento que entrou pela porta... uma voz fala com ele </html>";
        
         h[4]="<html>Depois de caminhar pelas tochas ele se depara<br> com uma porta em seu caminho e<br> sem querer ele ativa uma placa de pressão<br> \n" +
 "Após pisar, uma voz ecoa pela caverna</html>";
         
         h[5]="<html>Ao passar pela porta ela misteriosamente se fecha<br> então Stephen percebe que não tem um caminho<br> de volta ele terá que concluir os desafios, ou pelo menos tentar</html>";
         
-        h[6]="<html>Dona voz misteriosa surgiu uma dúvida na minha cabeça<br>\n" +
-"Quem cria essas perguntas?<br> É você ou alguém fez antes e você so está seguindo um roteiro?</html>";
+        h[6]="<html>Se você busca o tesouro entre, caso contrario não ouse, entraaaaa</html>";
         
-        h[7]="VOCÊ NÃO TEM AUTORIZAÇÃO PARA SABER DISSO!";
+        h[7]="Me fala do tesouro.... voz misteriosa: O conhecimento de uma raça absoluta";
         
-        h[8]="SÓ... COMPLETE... OS... DESAFIOS... ";
+        h[8]="Alguem passou aqui recentemente?... voz misteriosa: um jovem viajante";
         
-        h[9]="PODE PELO MENOS DESCREVER O PRÊMIO QUE EU VOU GANHAR QUANDO EU TERMINAR POR AQUI?";
+        h[9]="Só pode ser o Johnny(Pensou Stephen)";
         
-        h[10]="<html>O PRÊMIO É O CONHECIMENTO QUE ESTÁ GUARDADO DENTRO DE UM PERGAMINHO<br> EM UM SANTUARIO NESTA CAVERNA ONDE ELE CONTEM<br> TODO O CONHECIMENTO DE UMA RAÇA ABSOLUTA ALÉM DA CONCIÊNCIA</html>";
+        h[10]="Está quase viajante. Só mais um pouco";
         
-        h[11]="ALGUEM JÁ VEIO AQUI ANTES? MELHOR AINDA ALGUEM CHAMADO HANK VEIO AQUI?\n" +
-"";
+        h[11]="Alguem com o nome de Jhonny, passou aqui?";
         
-        h[12]="<html>SIM, UM TAL DE HANK VEIO AQUI FAZ UNS 2 ANOS SE ME LEMBRO BEM,<br> MAS ELE NÃO RESISTIU ELE MORREU NO ULTIMO DESAFIO.\n" +
-"<br>ESSE TAL DE HANK É UM ENTE PROXÍMO SEU?</html>";
+        h[12]="<html>Termine os desafios ... e terá as respostas</html>";
         
-        h[13]="Voz misteriosa diz, EU SOU SEU PAI";
+        h[13]="Stephen, após chegar  a última questão a voz fala com ele";
         
-        h[14]="Como você sobreviveu?????";
+        h[14]="Uma porta ser abre antes de conseguir tocar no pergaminho";
        
         
         

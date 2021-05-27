@@ -98,6 +98,7 @@ public class Rodando extends javax.swing.JFrame {
         jTextField2 = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jLabel15 = new javax.swing.JLabel();
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu5 = new javax.swing.JMenu();
         jRadioButtonMenuItem3 = new javax.swing.JRadioButtonMenuItem();
@@ -202,6 +203,9 @@ public class Rodando extends javax.swing.JFrame {
             }
         });
 
+        jLabel15.setFont(new java.awt.Font("Arial Black", 1, 11)); // NOI18N
+        jLabel15.setText("jLabel15");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -240,7 +244,7 @@ public class Rodando extends javax.swing.JFrame {
                         .addComponent(jButton7)))
                 .addGap(70, 70, 70))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(446, 446, 446)
+                .addGap(464, 464, 464)
                 .addComponent(jLabel12)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel11)
@@ -255,13 +259,15 @@ public class Rodando extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel6))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(34, 34, 34)
                         .addComponent(jButton3)
                         .addGap(60, 60, 60)
-                        .addComponent(jButton4)))
+                        .addComponent(jButton4))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel15)
+                            .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -272,7 +278,8 @@ public class Rodando extends javax.swing.JFrame {
                         .addGap(20, 20, 20)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel11)
-                            .addComponent(jLabel12)))
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel15)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -553,29 +560,33 @@ public class Rodando extends javax.swing.JFrame {
     }
 
     private void mostraHistoria() {
+        // Carrega as historias do jogo conforme personagem escolhido.
       String opcao = jTextField2.getText();
       int op =Integer.parseInt(opcao);
+      
       switch(op){
           case 1:
         //Carrega a historia do jogo, junto das perguntas.
         if (i <= historiaDojogo.length) {
             jLabel13.setVisible(true);
+            jLabel15.setVisible(true);
             String texto = historia(historiaDojogo)[i];
             jLabel13.setText(texto);
-            jLabel13.setForeground(Color.black);
+            jLabel15.setText("Personagem: Jhonny");
             i++;
             break;
       }
           case 2: 
-                if (i <= historiaDojogo.length) {
+         if (i <= historiaDojogo.length) {
             jLabel13.setVisible(true);
-            String texto = historiadois(historiaDojogo)[i];
+            jLabel15.setVisible(true);
+            String texto = historiadois(historiaDojogo)[r];
             jLabel13.setText(texto);
-            jLabel13.setForeground(Color.black);
+            jLabel15.setText("Personagem: Stephen");     
             i++;
             break;
       }
-              break;
+           
         }
 
     }
@@ -592,6 +603,7 @@ public class Rodando extends javax.swing.JFrame {
         jLabel12.setVisible(false);
         jLabel14.setVisible(false);
         jTextField1.setVisible(false);
+        jLabel15.setVisible(false);
         jButton7.setText("Iniciar");
         isInicio = true;
         pontos = 5;
@@ -670,6 +682,8 @@ public class Rodando extends javax.swing.JFrame {
         jLabel11.setForeground(Color.green);
         jLabel12.setForeground(Color.green);
         jLabel14.setForeground(Color.yellow);
+        jLabel13.setForeground(Color.black);
+        jLabel15.setForeground(Color.yellow);
 
     }
 
@@ -722,6 +736,7 @@ public class Rodando extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
